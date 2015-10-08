@@ -28,11 +28,11 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'umd' /* IMPORTANT - must be requirable */
   },
-  plugins: [new StaticWebpackPlugin('client.js')]
+  plugins: [new StaticWebpackPlugin('static.js')]
 };
 ```
 
-### client.js
+### static.js
 
 ``` javascript
 module.exports = function(render, done) {
