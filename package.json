@@ -1,0 +1,19 @@
+{
+  "name": "static-webpack-plugin",
+  "version": "0.0.1",
+  "description": "A static-site generator powered by webpack.",
+  "main": "index.js",
+  "dependencies": {
+    "eval": "^0.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "author": "Max White <mushishi78@gmail.com>",
+  "license": "ISC"
+}
