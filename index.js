@@ -1,7 +1,9 @@
 var evaluate = require('eval');
 
-function StaticWebpackPlugin(bundlePath) {
+function StaticWebpackPlugin(bundlePath, opts) {
   this.bundlePath = bundlePath;
+  opts = opts || {};
+  this.clean = 'clean' in opts ? opts.clean : true;
 }
 
 StaticWebpackPlugin.prototype.apply = function(compiler) {
@@ -10,6 +12,11 @@ StaticWebpackPlugin.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, done) {
     var source = compilation.assets[self.bundlePath].source();
     var render = evaluate(source, self.bundlePath, undefined, true);
+
+    if(self.clean) {
+      delete compilation.assets[self.bundlePath];
+    }
+
     render(addToAssets(compilation.assets), done);
   });
 };
