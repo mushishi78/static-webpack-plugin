@@ -12,6 +12,7 @@ StaticWebpackPlugin.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, done) {
     var source = compilation.assets[self.bundlePath].source();
     var render = evaluate(source, self.bundlePath, undefined, true);
+    render = render.default || render;
 
     if(self.clean) {
       delete compilation.assets[self.bundlePath];
